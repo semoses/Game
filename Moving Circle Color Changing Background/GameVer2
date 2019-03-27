@@ -1,0 +1,48 @@
+import pygame
+import random
+
+pygame.init()
+
+########################################################
+# initial variables
+screenWidth = 800
+screenHeight = 800
+timer = 0
+colorR, colorG, colorB = 0, 0, 0
+circleX = 400
+circleY = 400
+circleR = 30
+########################################################
+screen = pygame.display.set_mode([screenHeight, screenWidth])
+clock = pygame.time.Clock()
+
+while True:
+	for event in pygame.event.get():
+		if event.type == pygame.QUIT:
+			pygame.quit()
+	if timer%50 == 0:
+		colorR = random.randint(0,255)
+		colorG = random.randint(0,255)
+		colorB = random.randint(0,255)
+	timer += 1
+	screen.fill([colorR, colorB, colorG])
+	pygame.draw
+	clock.tick(40)
+	if event.type == pygame.KEYDOWN:
+		if event.key == pygame.K_LEFT:
+			circleX -= 10
+			circleX = (circleX - circleR)%screenWidth
+		elif event.key == pygame.K_RIGHT:
+			circleX += 10
+			circleX = (circleX + circleR)%screenWidth
+		elif event.key == pygame.K_UP:
+			circleY -= 10
+			circleY = (circleY - circleR)%screenWidth
+		elif event.key == pygame.K_DOWN:
+			circleY += 10		
+			circleY = (circleY + circleR)%screenWidth
+	pygame.draw.circle(screen, (255,255,255), (circleX,circleY), circleR)
+	# last command
+	pygame.display.flip()
+pygame.display.quit()
+pygame.quit()
